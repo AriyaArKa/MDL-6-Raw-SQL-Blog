@@ -6,7 +6,7 @@ CREATE TABLE Users(
     id INT PRIMARY KEY AUTO_INCREMENT,
     email VARCHAR(255) NOT NULL Unique,
     password VARCHAR(255) NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
@@ -19,7 +19,7 @@ CREATE TABLE Posts(
     user_id INT NOT NULL,
     FOREIGN KEY (user_id) REFERENCES Users(id) ON DELETE CASCADE,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
 -- Table: blog.comments
@@ -48,13 +48,13 @@ INSERT INTO Posts(title,content,user_id) values ('My First Post','This is the co
 INSERT INTO Comments(post_id,user_id,comment) values (1,1,'This is a comment on the first post');
 
 
--- Get all posts with user information
-SELECT  u.id AS user_id, u.email as user_email,
-        p.id AS post_id, p.title as post_title,
-        c.id as comment_id,c.comment as comment
+-- -- Get all posts with user information
+-- SELECT  u.id AS user_id, u.email as user_email,
+--         p.id AS post_id, p.title as post_title,
+--         c.id as comment_id,c.comment as comment
 
-FROM Users as u
-JOIN Posts as p ON p.user_id = u.id;
-JOIN Comments as c ON p.id = c.post_id
-where c.user_id = u.id;
+-- FROM Users as u
+-- JOIN Posts as p ON p.user_id = u.id
+-- JOIN Comments as c ON p.id = c.post_id
+-- where c.user_id = u.id;
 
