@@ -49,12 +49,12 @@ INSERT INTO Comments(post_id,user_id,comment) values (1,1,'This is a comment on 
 
 
 -- -- Get all posts with user information
--- SELECT  u.id AS user_id, u.email as user_email,
---         p.id AS post_id, p.title as post_title,
---         c.id as comment_id,c.comment as comment
+SELECT  u.id AS user_id, u.email as user_email,
+        p.id AS post_id, p.title as post_title,
+        c.id as comment_id,c.comment as comment
 
--- FROM Users as u
--- JOIN Posts as p ON p.user_id = u.id
--- JOIN Comments as c ON p.id = c.post_id
--- where c.user_id = u.id;
+FROM Users as u
+JOIN Posts as p ON p.user_id = u.id
+JOIN Comments as c ON p.id = c.post_id
+where c.user_id = u.id;
 
